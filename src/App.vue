@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div v-if="getConnectionStatus == false">
+      Server is not running!
     </div>
-    <router-view />
+    <div v-else>
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/console">Console</router-link>
+      </div>
+      <router-view />
+    </div>
   </div>
 </template>
+
+<script>
+import store from "./store";
+
+export default {
+  computed:{
+    getConnectionStatus: function(){ return store.state.socket_hasConnection; }
+  }
+}
+</script>
+
 
 <style>
 #app {

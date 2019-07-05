@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="clients">
+
+    <div v-for="client in clients" v-bind:key="client.context.username">
+      {{ client.context.username }}
+    </div>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import store from "../store";
 
 export default {
   name: "home",
-  components: {
-    HelloWorld
+  components: { },
+  created(){
+
+  },
+  computed:{
+    clients: function(){ return store.state.clients;}
   }
 };
 </script>
